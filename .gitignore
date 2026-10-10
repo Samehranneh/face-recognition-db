@@ -2,3 +2,9 @@ face_data.json
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+# desktop app: never commit records, photos or builds
+biometric_registry/
+images/
+build/
+dist/
+build_log.txt

@@ -37,6 +37,23 @@ Match: Test Person [0001], distance 0.3812 (tolerance 0.55)
 
 Lower distance means more similar. Change `TOLERANCE` in `face_db.py` to make matching stricter or looser.
 
+## Desktop app
+
+`desktop_app/biometric_registry.py` is a full graphical version built with [Gradio](https://gradio.app):
+
+- **Register** a person with a photo and case details (name, parents' names, ID card, address, phone, city of birth and registration, notes). The photo is saved and its face embedding stored.
+- **Search** by photo (face match with a confidence score, or the closest record when nothing passes the threshold), by name, or by registration city.
+- **Delete** a record after looking it up by name or ID card.
+
+Records are stored in `~/biometric_registry` by default; set `REGISTRY_DIR` to change it.
+
+```bash
+pip install gradio face_recognition pillow numpy
+python desktop_app/biometric_registry.py
+```
+
+`build_exe.bat` packages it as a single Windows `.exe` with PyInstaller.
+
 ## Data protection
 
 Face embeddings are biometric data. Before using anything like this with real people:
@@ -46,7 +63,7 @@ Face embeddings are biometric data. Before using anything like this with real pe
 - keep as few personal fields as possible,
 - follow your organization's data protection policy (and, in humanitarian settings, the ICRC handbook on data protection).
 
-`face_data.json` is git-ignored so records are never committed.
+`face_data.json`, the app's data folder and saved photos are git-ignored so records are never committed. No real records or photos are included in this repository.
 
 ## Limitations
 
